@@ -17,17 +17,17 @@ class SymbolProcessor:
         Please add appropriate punctuation to the user’s input and return it. Apart from this, do not add or modify anything else. Do not translate the user's input. Do not add any explanation. Do not answer the user's question and so on. Just output the user's input with punctuation!
         """
         try:
-            logger.info(f"正在添加标点符号...")
+            logger.info("正在添加标点符号...")
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": text}
-            ]
-        )
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": text},
+                ],
+            )
             return response.choices[0].message.content
         except Exception as e:
-            return text, e
+            raise RuntimeError(f"标点添加失败: {e}")
         
     def optimize_result(self, text):
         """优化识别结果"""
@@ -56,14 +56,14 @@ class SymbolProcessor:
         Do not add answer to the user's question,just output the optimized content.
         """
         try:
-            logger.info(f"正在优化识别结果...")
+            logger.info("正在优化识别结果...")
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": text}
-            ]
-        )
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": text},
+                ],
+            )
             return response.choices[0].message.content
         except Exception as e:
-            return text, e
+            raise RuntimeError(f"优化识别结果失败: {e}")

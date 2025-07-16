@@ -49,19 +49,9 @@ class SenseVoiceSmallProcessor:
         api_key = os.getenv("SILICONFLOW_API_KEY")
         assert api_key, "未设置 SILICONFLOW_API_KEY 环境变量"
         
-        self.convert_to_simplified = os.getenv("CONVERT_TO_SIMPLIFIED", "false").lower() == "true"
-        # self.cc = OpenCC('t2s') if self.convert_to_simplified else None
-        # self.symbol = SymbolProcessor()
-        # self.add_symbol = os.getenv("ADD_SYMBOL", "false").lower() == "true"
-        # self.optimize_result = os.getenv("OPTIMIZE_RESULT", "false").lower() == "true"
+        # Symbol and optimization processors are currently disabled
         self.timeout_seconds = self.DEFAULT_TIMEOUT
         self.translate_processor = TranslateProcessor()
-
-    def _convert_traditional_to_simplified(self, text):
-        """将繁体中文转换为简体中文"""
-        if not self.convert_to_simplified or not text:
-            return text
-        return self.cc.convert(text)
 
     @timeout_decorator(10)
     def _call_api(self, audio_data):
