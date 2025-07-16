@@ -36,11 +36,11 @@ class VoiceAssistant:
             on_translate_stop=self.stop_translation_recording,
             on_reset_state=self.reset_state
         )
-    
+
     def start_transcription_recording(self):
         """开始录音（转录模式）"""
         self.audio_recorder.start_recording()
-    
+
     def stop_transcription_recording(self):
         """停止录音并处理（转录模式）"""
         audio = self.audio_recorder.stop_recording()
@@ -59,11 +59,11 @@ class VoiceAssistant:
         else:
             logger.error("没有录音数据，状态将重置")
             self.keyboard_manager.reset_state()
-    
+
     def start_translation_recording(self):
         """开始录音（翻译模式）"""
         self.audio_recorder.start_recording()
-    
+
     def stop_translation_recording(self):
         """停止录音并处理（翻译模式）"""
         audio = self.audio_recorder.stop_recording()
@@ -85,7 +85,7 @@ class VoiceAssistant:
     def reset_state(self):
         """重置状态"""
         self.keyboard_manager.reset_state()
-    
+
     def run(self):
         """运行语音助手"""
         logger.info("=== 语音助手已启动 ===")
@@ -116,4 +116,4 @@ def main():
             sys.exit(1)
 
 if __name__ == "__main__":
-    main() 
+    main()

@@ -1,0 +1,13 @@
+{
+  "name": "whisper-voice-input",
+  "version": "0.1.0",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "obsidian": "latest",
+    "typescript": "^5.0.0"
+  }
+}

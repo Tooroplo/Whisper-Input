@@ -196,3 +196,9 @@ Whisper Input 是受到即友[FeiTTT](https://web.okjike.com/u/DB98BE7A-9DBB-473
 ## 协议
 
 遵循 MIT 协议
+### Running tests
+Install dependencies and run `pytest`:
+```bash
+pip install -r requirements.txt
+pytest -q
+```

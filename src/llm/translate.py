@@ -33,7 +33,17 @@ class TranslateProcessor:
             ]
         }
         try:
-            response = requests.request("POST", self.url, headers=self.headers, json=payload)
-            return response.json().get('choices', [{}])[0].get('message', {}).get('content', '')
+            response = requests.request(
+                "POST",
+                self.url,
+                headers=self.headers,
+                json=payload,
+            )
+            return (
+                response.json()
+                .get("choices", [{}])[0]
+                .get("message", {})
+                .get("content", "")
+            )
         except Exception as e:
-            return text, e
+            raise RuntimeError(f"翻译失败: {e}")

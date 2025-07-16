@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QPushButton, QPlainTextEdit, QLineEdit,
     QHBoxLayout, QLabel, QGroupBox, QGraphicsDropShadowEffect
 )
-from PyQt5.QtCore import QFileSystemWatcher, QTimer
+from PyQt5.QtCore import QFileSystemWatcher, QTimer, QUrl
 from PyQt5.QtGui import QDesktopServices, QColor
 import os
 from dotenv import load_dotenv
@@ -310,7 +310,8 @@ class ControlUI(QWidget):
 
     def open_key_url(self):
         """打开获取API Key的URL"""
-        QDesktopServices.openUrl("https://cloud.siliconflow.cn/account/ak")
+        # QDesktopServices expects a QUrl object
+        QDesktopServices.openUrl(QUrl("https://cloud.siliconflow.cn/account/ak"))
 
     def save_settings(self):
         """保存设置到.env文件"""
